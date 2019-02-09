@@ -1,0 +1,40 @@
+<!--abook.wxml-->
+<view class="classname" wx:if="{{isnull == 1}}">
+  <view class="page__desc">您还没有添加信用卡，请点击下面“添加信用卡”按钮进行添加</view>
+</view>
+<view class="classname" wx:else>
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">信用卡</view>
+      <view class="th">账单日</view>
+      <view class="th">还款日</view>
+      <view class="th">免息期</view>
+      <view class="th">还款期</view>
+    </view>
+    <block wx:for="{{infos}}" wx:for-item="info" wx:key="*this">
+      <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+            <navigator class="tr" catchtap="recordChange" url="../update/update?index={{index}}">
+                <view class="td">{{info.name}}</view>
+                <view class="td">{{info.bill}}</view>
+                <view class="td">{{info.pay}}</view>
+                <view class="td">{{info.norateday}}</view>
+                <view class="td" wx:if="{{info.day2pay < 5}}"style="color:#ff0000">{{info.day2pay}}</view>
+                <view class="td" wx:else>{{info.day2pay}}</view>
+            </navigator>
+        </view>
+        <view class="tr bg-w" wx:else>      
+            <navigator class="tr" url="../update/update?index={{index}}">
+                <view class="td">{{info.name}}</view>
+                <view class="td">{{info.bill}}</view>
+                <view class="td">{{info.pay}}</view>
+                <view class="td">{{info.norateday}}</view>
+                <view class="td" wx:if="{{info.day2pay < 5}}"style="color:#ff0000">{{info.day2pay}}</view>
+                <view class="td" wx:else>{{info.day2pay}}</view>
+              </navigator>
+        </view> 
+    </block>
+  </view>
+</view>
+<view class="sumbit">
+  <button class="add_credit_card_sumbit" formType="submit" bindtap="add" type="primary">添加信用卡</button>
+</view>

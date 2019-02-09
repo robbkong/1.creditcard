@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/abook/abook",
+    "pages/add/add",
+    "pages/update/update"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

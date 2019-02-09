@@ -1,0 +1,33 @@
+<!--pages/update/update.wxml-->
+<form bindsubmit="formSubmit">
+    <view class="name">
+      <view class="weui-cells__title">信用卡名称</view>
+          <view class="credit_card_name__body">
+            <input name="credit_card_name" class="credit_card_name_input" value="{{info.name}}" placeholder="信用卡名称" />
+          </view>
+    </view>
+      <view class="bill">
+          <view class="weui-cells__title">账单日</view>
+        <view class="bill_body">
+          <picker bindchange="bindbill" value="{{index1}}" range="{{array1}}">
+              <view class="picker">
+                <button type="default">每月：{{array1[index1]}}号</button>
+              </view>
+            </picker>
+        </view>
+      </view>
+      <view class="pay">
+          <view class="weui-cells__title">还款日</view>
+        <view class="pay_body">
+          <picker bindchange="bindpay" value="{{index2}}" range="{{array2}}" >
+              <view class="picker">
+                <button type="default">每月：{{array2[index2]}}号</button>
+              </view>
+            </picker>
+        </view>
+      </view>
+      <view class="sumbit">
+      <button class="weui-btn" formType="submit" type="primary">保存</button>
+      <button class="weui-btn" type="warn" bindtap="del">删除</button>
+      </view>
+</form>
