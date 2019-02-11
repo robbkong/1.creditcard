@@ -41,8 +41,8 @@ Page({
         this.data.infos[i + 1] = key;
       }
 
-      wx.setStorageSync("INFOS", this.data);
-      console.log("[abbok page] set infos success, the infos is :", this.data)
+      // no need to reset the INFOS
+      //wx.setStorageSync("INFOS", this.data);
       is_null = 0;
       this.setData({infos: this.data.infos});
     }

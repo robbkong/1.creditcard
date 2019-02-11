@@ -32,13 +32,9 @@ Page({
   },
   formSubmit: function (e) {
     var Name = e.detail.value.credit_card_name;
-    var norate = app.f_norateday(parseInt(this.data.index1) + 1, parseInt(this.data.index2) + 1);
-    var day2p = app.f_day2pay(parseInt(this.data.index2) + 1);
     this.data.infos = wx.getStorageSync('INFOS').infos;
 
     this.data.info.name = Name;
-    this.data.info.norateday = norate;
-    this.data.info.day2pay = day2p;
     this.data.info.bill = parseInt(this.data.index1) + 1;
     this.data.info.pay = parseInt(this.data.index2) + 1;
 

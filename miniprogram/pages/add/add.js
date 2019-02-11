@@ -74,16 +74,12 @@ Page({
   },
   formSubmit: function (e) {
     var Name = e.detail.value.credit_card_name;
-    var norate = app.f_norateday(parseInt(this.data.index1) + 1, parseInt(this.data.index2)+1);
-    var day2p = app.f_day2pay(parseInt(this.data.index2)+1);
     this.data.infos = wx.getStorageSync('INFOS').infos;
     var info = 
     [{
       name:Name,
       bill: (parseInt(this.data.index1)+1),
-      pay: (parseInt(this.data.index2)+1),
-      norateday: norate,
-      day2pay: day2p
+      pay: (parseInt(this.data.index2)+1)
     }];
     console.log('[add page1] the infos is:', this.data.infos);
     console.log('[add page2] is the infos is undefined:', ((this.data.infos) == undefined));
