@@ -13,7 +13,7 @@
     </view>
     <block wx:for="{{infos}}" wx:for-item="info" wx:key="*this">
       <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
-            <navigator class="tr" catchtap="recordChange" url="../update/update?index={{index}}">
+            <navigator class="tr" catchtap="recordChange" url="../update/update?index={{info.id}}">
                 <view class="td">{{info.name}}</view>
                 <view class="td">{{info.bill}}</view>
                 <view class="td">{{info.pay}}</view>
@@ -23,7 +23,7 @@
             </navigator>
         </view>
         <view class="tr bg-w" wx:else>      
-            <navigator class="tr" url="../update/update?index={{index}}">
+            <navigator class="tr" url="../update/update?index={{info.id}}">
                 <view class="td">{{info.name}}</view>
                 <view class="td">{{info.bill}}</view>
                 <view class="td">{{info.pay}}</view>

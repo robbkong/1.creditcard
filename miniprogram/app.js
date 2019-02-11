@@ -1,28 +1,15 @@
 //app.js
 App({
   onLaunch: function () {
-    //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-  },
-  getUserInfo:function(cb){
-    var that = this
-    if(this.globalData.userInfo){
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    }else{
-      //调用登录接口
-      wx.login({
-        success: function () {
-          wx.getUserInfo({
-            success: function (res) {
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
-            }
-          })
-        }
+    if (!wx.cloud) {
+      console.error('请使用 2.2.3 或以上的基础库以使用云能力')
+    } else {
+      wx.cloud.init({
+        traceUser: true,
       })
     }
+
+    this.globalData = {}
   },
   day_month: function (n) {
     var date = new Date();
@@ -53,7 +40,6 @@ App({
     else {
       bill2payday = this.day_month(date.getMonth()) - bill + pay;
     }
-    //console.log('bill2payday', bill2payday);
     return bill2payday;
   },
   f_day2pay: function (pay) {
@@ -74,10 +60,6 @@ App({
     var norate;
     if (day <= bill) {
       norate = bill - day + this.bill2pay(bill, pay);
-      //console.log('f:  bill', bill)
-      //console.log('f:  day', day)
-      //console.log('f:  this.bill2pay(bill, pay)', this.bill2pay(bill, pay))
-      //console.log('f:  norate', norate)
     }
     else {
       norate = this.day_month(date.getMonth()) - day + bill + this.bill2pay(bill, pay);
