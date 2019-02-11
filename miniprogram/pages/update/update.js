@@ -34,8 +34,8 @@ Page({
         console.log('[数据库] [查询记录] 成功: ', res.data)
         this.setData({ info: myinfo });
         this.setData({ id: options.index });
-        this.setData({ index1: info.bill - 1 });
-        this.setData({ index2: info.pay - 1 });
+        this.setData({ index1: myinfo.bill - 1 });
+        this.setData({ index2: myinfo.pay - 1 });
       },
       fail: err => {
         wx.showToast({

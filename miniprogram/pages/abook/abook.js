@@ -35,6 +35,7 @@ Page({
     this.show();
   },
   show: function () {
+    this.setData({ isnull: 1 });
     const db = wx.cloud.database()
     // 查询当前用户所有的 counters
     db.collection(this.data.database).where({
@@ -48,7 +49,7 @@ Page({
           temp[i].id = res.data[i]._id;
         }
         this.data.infos = temp;
-        //console.log(temp)
+        console.log(temp)
         console.log('[数据库] [查询记录] 成功: ', res.data)
 
         // update the norateday and pay2dao
@@ -76,6 +77,7 @@ Page({
           icon: 'none',
           title: '查询记录失败'
         })
+        this.setData({ isnull: 1 });
         console.error('[数据库] [查询记录] 失败：', err)
       }
     })
